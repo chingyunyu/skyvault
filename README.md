@@ -38,3 +38,15 @@ $ docker-compose up -d
 ```sh
 $ http://127.0.0.1
 ```
+
+### (Optional) Run Pytest Tests
+
+```sh
+$ docker-compose run test
+```
+
+### Stop Docker Containers
+
+```sh
+$ docker-compose down
+```

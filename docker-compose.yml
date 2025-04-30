@@ -9,6 +9,8 @@ services:
       - "8000:8000"
     command: >
       sh -c "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 app.wsgi:application"
+    environment:
+      - DJANGO_SETTINGS_MODULE=app.settings
 
   nginx:
     image: nginx:latest
@@ -19,3 +21,13 @@ services:
       - "80:80"
     depends_on:
       - web
+
+  test:
+    build: .
+    volumes:
+      - ./app:/app/app
+      - ./db:/app/db
+      - ./manage.py:/app/manage.py
+    entrypoint: ["pytest", "-v", "--disable-warnings"]
+    environment:
+      - DJANGO_SETTINGS_MODULE=app.settings
