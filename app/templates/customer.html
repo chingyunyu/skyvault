@@ -5,12 +5,32 @@
     <title>SkyVault - Customer</title>
 </head>
 <body>
-    <h2>Subscription</h1>
+    <h3>Current Plan: {{ current_plan|default:"none" }}</h3>
 
     <ul>
-        {% for sub in subscriptions %}
-            <li>{{ sub.plan }}: {{ sub.price }} NTD/month</li>
-        {% endfor %}
+    {% for sub in subscriptions %}
+        <li>{{ sub.plan }}: {{ sub.price }} NTD/month
+            {% if current_plan %}
+                {% if current_plan == sub.plan %}
+                    <form method="post" action="/terminate">
+                        {% csrf_token %}
+                        <input type="hidden" name="plan" value="{{ sub.plan }}">
+                        <button type="submit" disabled>Start</button>
+                        <button type="submit">End</button>
+                    </form>
+                {% else %}
+                    <button disabled>Start</button>
+                    <button disabled>End</button>
+                {% endif %}
+            {% else %}
+                <form method="get" action="/payment">
+                    <input type="hidden" name="plan" value="{{ sub.plan }}">
+                    <button type="submit">Start</button>
+                    <button type="submit" disabled>End</button>
+                </form>
+            {% endif %}
+        </li>
+    {% endfor %}
     </ul>
 
     <br><a href="/">Sign Out</a>

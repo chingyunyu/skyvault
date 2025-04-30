@@ -27,6 +27,8 @@ def index(request):
                 return redirect('/')  # Failed login
         
         # Login success
+        request.session['email'] = account.email
+
         if account.level == 'admin':
             return redirect('/admin')
         else:

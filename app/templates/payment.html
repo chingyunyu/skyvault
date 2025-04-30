@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SkyVault - Payment</title>
+</head>
+<body>
+    <h2>Payment for {{ plan }} - {{ price }} NTD</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="plan" value="{{ plan }}">
+        <input type="hidden" name="price" value="{{ price }}">
+        <input type="text" name="card_number" placeholder="Card Number" required><br>
+        <input type="text" name="name" placeholder="Name" required><br>
+        <input type="text" name="exp_month" placeholder="Expiration Month" required><br>
+        <input type="text" name="exp_year" placeholder="Expiration Year" required><br>
+        <input type="text" name="cvc" placeholder="CVC" required><br>
+        <button type="submit">Pay</button>
+    </form>
+
+    <br><a href="/customer">Cancel</a>
+</body>
+</html>

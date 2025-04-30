@@ -12,6 +12,13 @@
         {% endfor %}
     </ul>
 
+    <h2>Payment</h2>
+    <ul>
+        {% for pay in payments %}
+            <li>{{ pay.id }}, {{ pay.email }}, {{ pay.plan }}, {{ pay.price }}, {{ pay.start }}, {{ pay.end }}</li>
+        {% endfor %}
+    </ul>
+
     <h2>Subscription</h2>
     <ul>
         {% for sub in subscriptions %}
