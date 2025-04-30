@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SkyVault - Customer</title>
+</head>
+<body>
+    <h2>Subscription</h1>
+
+    <ul>
+        {% for sub in subscriptions %}
+            <li>{{ sub.plan }}: {{ sub.price }} NTD/month</li>
+        {% endfor %}
+    </ul>
+
+    <br><a href="/">Sign Out</a>
+</body>
+</html>

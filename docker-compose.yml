@@ -7,6 +7,8 @@ services:
       - ./manage.py:/app/manage.py
     ports:
       - "8000:8000"
+    command: >
+      sh -c "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 app.wsgi:application"
 
   nginx:
     image: nginx:latest

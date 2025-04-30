@@ -10,6 +10,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.staticfiles',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -39,3 +40,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'app', 'static'),
 ]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

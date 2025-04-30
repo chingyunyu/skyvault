@@ -1,6 +1,10 @@
 from django.urls import path
 from app.views.index import index
+from app.views.admin import admin
+from app.views.customer import customer
 
 urlpatterns = [
     path('', index),
+    path('admin', admin),
+    path('customer', customer),
 ]
